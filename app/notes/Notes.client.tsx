@@ -12,19 +12,24 @@ import { useDebouncedCallback } from 'use-debounce';
 import SearchBox from '@/components/SearchBox/SearchBox';
 import Pagination from '@/components/Pagination/Pagination';
 
-const NotesClient = () => {
+interface NotesClientProps {
+  tag?: string;
+}
+
+const NotesClient = ({ tag }: NotesClientProps) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [search, setSearch] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const { data, isLoading } = useQuery({
-    queryKey: ['notes', currentPage, search],
-    queryFn: () => fetchNotes(currentPage, search),
+    queryKey: ['notes', currentPage, search, tag],
+    queryFn: () => fetchNotes(currentPage, search, tag),
     placeholderData: keepPreviousData,
     refetchOnMount: false,
   });
 
   useEffect(() => {
+    console.log(data);
     if (!isLoading && data && data.notes.length === 0 && search.trim() !== '') {
       toast.error('No notes found for this search.');
     }

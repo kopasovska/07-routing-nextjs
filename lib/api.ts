@@ -20,10 +20,12 @@ interface FetchNotesHttpResponse {
 export const fetchNotes = async (
   page: number,
   search: string,
+  tag?: string,
 ): Promise<FetchNotesHttpResponse> => {
   const response = await axios.get<FetchNotesHttpResponse>('/notes', {
     params: {
       search,
+      tag,
       page,
       perPage: 12,
     },
