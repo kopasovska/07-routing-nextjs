@@ -29,6 +29,11 @@ const NotesSidebar = () => {
           Shopping
         </Link>
       </li>
+      <li className={css.menuItem}>
+        <Link href={`/notes/filter/Meeting`} className={css.menuLink}>
+          Meeting
+        </Link>
+      </li>
     </ul>
   );
 };
