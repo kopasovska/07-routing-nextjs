@@ -20,3 +20,22 @@
   position: relative;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
+
+.closeBtn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  line-height: 1;
+  color: #333;
+  transition: all 0.3s ease-in;
+}
+
+.closeBtn:hover {
+  color: #9a999b;
+  transform: rotate(90deg);
+}
